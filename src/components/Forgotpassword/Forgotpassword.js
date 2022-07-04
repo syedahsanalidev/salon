@@ -1,40 +1,41 @@
-import { SocialLogin } from 'components/shared/SocialLogin/SocialLogin';
+// import { SocialLogin } from 'components/shared/SocialLogin/SocialLogin';
 import router from 'next/router';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
-import loginschema from './schemalogin';
-import { login } from './loginservice';
-import Link from 'next/link';
+import Forgotschema from './Forgotschema';
+import { Forgot } from './Forgotservice';
 
-export const Login = () => {
+
+const Forgotpassword = () => {
   const INITIAL_VALUES = {
     email: '',
-    password: ''
+    
   }
 
   return (
     <>
-      {/* <!-- BEGIN LOGIN --> */}
+      {/* <!-- BEGIN Forgotpassword--> */}
 
       <Formik
         initialValues={INITIAL_VALUES}
-        validationSchema={loginschema}
-        onSubmit={async (values, { setSubmitting ,resetForm}) => {
-          await login(values);
+        validationSchema={Forgotschema}
+        onSubmit={ async (values, { setSubmitting ,resetForm}) => {
+         
+          await Forgot(values);
           
           setSubmitting(false);
           resetForm();
         
         }}
       >
-        <div className='login'>
+        <div className='forgot'>
           <div className='wrapper'>
             <div
               className='login-form js-img'
               style={{ backgroundImage: `url('/assets/img/login-form__bg.png')` }}
             >
               <Form>
-                <h3>log in with</h3>
-                <SocialLogin />
+                <h3>Forgot Password</h3>
+                {/* <SocialLogin /> */}
 
                 <div className='box-field'>
                   <Field
@@ -48,24 +49,10 @@ export const Login = () => {
                     <ErrorMessage name="email" />
                   </div>
                 </div>
-                <div className='box-field'>
-                  <Field
-                    name='password'
-                    type='password'
-                    className='form-control'
-                    placeholder='Enter your password'
-                  />
-                  <div className="error">
-                    <ErrorMessage name='password' />
-                  </div>
-                </div>
-                <label className='checkbox-box checkbox-box__sm'>
-                  <input type='checkbox' />
-                  <span className='checkmark'></span>
-                  Remember me
-                </label>
+               
+                
                 <button className='btn' type='submit'>
-                  log in
+                  Submit
                 </button>
                 <div className='login-form__bottom'>
                   <span>
@@ -74,11 +61,7 @@ export const Login = () => {
                       Register now
                     </a>
                   </span>
-                  <span>
-                  <Link href='/forgot'>
-                    <a>Lost your password?</a></Link>
-                  </span>
-                  
+             
                 </div>
               </Form>
             </div>
@@ -89,8 +72,10 @@ export const Login = () => {
             alt=''
           />
         </div>
-        {/* <!-- LOGIN EOF   --> */}
+        {/* <!-- FORGOTPASSWORD EOF   --> */}
       </Formik>
     </>
   );
 };
+
+export default Forgotpassword;

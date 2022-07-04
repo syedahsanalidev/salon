@@ -23,10 +23,7 @@ export const navItem = [
         name: "My Profile",
         path: "/profile",
       },
-      // {
-      //   name: 'Login',
-      //   path: '/login',
-      // },
+     
       {
         name: "Registration",
         path: "/registration",

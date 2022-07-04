@@ -22,11 +22,11 @@ export const Registration = () => {
       <Formik
         initialValues={INITIAL_VALUES}
         validationSchema={registerSchema}
-        onSubmit={async (values, { setSubmitting }) => {
-          // console.log(" form dta", values)
+        onSubmit={async (values, { setSubmitting,resetForm }) => {
+         
            await Register(values);
           setSubmitting(false);
-          // resetForm()
+          resetForm();
 
         }}
       >
