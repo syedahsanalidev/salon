@@ -3,14 +3,13 @@ import router from 'next/router';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import Forgotschema from './Forgotschema';
 import { Forgot } from './Forgotservice';
-
+import Link from 'next/link';
 
 const Forgotpassword = () => {
   const INITIAL_VALUES = {
     email: '',
-    
-  }
 
+  }
   return (
     <>
       {/* <!-- BEGIN Forgotpassword--> */}
@@ -18,13 +17,11 @@ const Forgotpassword = () => {
       <Formik
         initialValues={INITIAL_VALUES}
         validationSchema={Forgotschema}
-        onSubmit={ async (values, { setSubmitting ,resetForm}) => {
-         
+        onSubmit={async (values, { setSubmitting, resetForm }) => {
           await Forgot(values);
-          
           setSubmitting(false);
           resetForm();
-        
+
         }}
       >
         <div className='forgot'>
@@ -35,25 +32,25 @@ const Forgotpassword = () => {
             >
               <Form>
                 <h3>Forgot Password</h3>
-                {/* <SocialLogin /> */}
-
                 <div className='box-field'>
                   <Field
                     name='email'
                     type='text'
                     className='form-control'
                     placeholder='Enter your email or nickname'
-                   
+
                   />
                   <div className="error">
                     <ErrorMessage name="email" />
                   </div>
                 </div>
-               
-                
-                <button className='btn' type='submit'>
-                  Submit
-                </button>
+                <span>
+                  <button className='btn' type='submit'>
+                    <Link href='/verify'>
+                      <a>Submit</a>
+                    </Link>
+                  </button>
+                </span>
                 <div className='login-form__bottom'>
                   <span>
                     No account?{' '}
@@ -61,7 +58,6 @@ const Forgotpassword = () => {
                       Register now
                     </a>
                   </span>
-             
                 </div>
               </Form>
             </div>

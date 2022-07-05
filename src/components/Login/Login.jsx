@@ -18,12 +18,11 @@ export const Login = () => {
       <Formik
         initialValues={INITIAL_VALUES}
         validationSchema={loginschema}
-        onSubmit={async (values, { setSubmitting ,resetForm}) => {
+        onSubmit={async (values, { setSubmitting, resetForm }) => {
           await login(values);
-          
           setSubmitting(false);
           resetForm();
-        
+
         }}
       >
         <div className='login'>
@@ -42,7 +41,7 @@ export const Login = () => {
                     type='text'
                     className='form-control'
                     placeholder='Enter your email or nickname'
-                   
+
                   />
                   <div className="error">
                     <ErrorMessage name="email" />
@@ -64,9 +63,13 @@ export const Login = () => {
                   <span className='checkmark'></span>
                   Remember me
                 </label>
-                <button className='btn' type='submit'>
-                  log in
-                </button>
+                <span>
+                    <button className='btn' type='submit'>
+                      <Link href='/profile'>
+                      <a> Log In</a>
+                       </Link>
+                    </button>  
+                 </span>
                 <div className='login-form__bottom'>
                   <span>
                     No account?{' '}
@@ -75,10 +78,10 @@ export const Login = () => {
                     </a>
                   </span>
                   <span>
-                  <Link href='/forgot'>
-                    <a>Lost your password?</a></Link>
+                    <Link href='/forgot'>
+                      <a>Lost your password?</a></Link>
                   </span>
-                  
+
                 </div>
               </Form>
             </div>

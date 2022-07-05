@@ -75,7 +75,7 @@ export const Header = () => {
                 </Link>
               </li>
               <li>
-                <Link href='/profile'>
+                <Link href='/login'>
                   <a>
                     <i className='icon-user'></i>
                   </a>
